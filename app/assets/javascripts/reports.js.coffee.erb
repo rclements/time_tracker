@@ -1,0 +1,35 @@
+$ ->
+  load_chart = new Highcharts.Chart
+    chart:
+      renderTo: 'graph'
+      #defaultSeriesType: 'line',
+    title:
+      text: 'Per Diem',
+    xAxis:
+      title:
+      type: 'datetime',
+    labels:
+      formatter: ->
+        this.value,
+    yAxis:
+      title:
+        text: 'Dollars',
+      #min: 0
+      #max: 100,
+    plotOptions:
+      area:
+        marker:
+          enabled: false
+          symbol: 'circle'
+          radius: 2
+          states:
+            hover:
+              enabled: true,
+    series: [
+      {
+        name: 'Per Diem'
+        data: window.App.Data.plutus_data
+      }
+    ]
+
+
